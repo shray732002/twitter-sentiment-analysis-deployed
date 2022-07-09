@@ -11,8 +11,8 @@ app = Flask(__name__)
 def remove(text):
     r = re.findall("@[\w]*",text)
     for i in r:
-        tweet = re.sub(i, '', text)
-    return tweet 
+        text = re.sub(i, '', text)
+    return text 
 def transform(text):
     text = text.lower()
     words = nltk.word_tokenize(text)
@@ -29,13 +29,9 @@ def predict_loan_status():
     if request.method=='POST':
         tweet = request.form['tweet'] 
         new_tweet = remove(tweet)
-        y = []
-        for i in new_tweet:
-            if i.isalnum() or i=='#':
-                y.append(i)
-        tweet = ' '.join(y)        
-
-        transformed = transform(tweet)
+        tweet1 =re.sub("[^a-zA-Z#]"," ",new_tweet)
+      
+        transformed = transform(tweet1)
         vector_input = tfidf.transform([transformed]).toarray()
         result = model.predict(vector_input)
         if result == 0:
