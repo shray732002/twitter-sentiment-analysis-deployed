@@ -1,0 +1,20 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Twitter Sentiment Analysis</title>
+    
+    <center><img src="../static/logo.png" alt="Twitter" style ="height:60px; width:60px;"><h2 style = "color: white;">Sentiment Analysis</h2></center><br><br>
+</head>
+<body style = "background-color: greenyellow;">
+    <form action="/" method="post" style="text-align:center;">
+        <textarea class="text-box" id="tweet" name="tweet" placeholder="Enter a tweet." onsubmit="return checkforblank()" style = "height:400px; width :600px;" ></textarea><br><br>
+        <input type="image"  src="../static/submit.png" alt = "Submit" style="width: 100px; height:100px;" ></button>
+    </form>
+{% if predictions == "racist/sexist" %}
+<h3 style ="color:black" align = "center">Your comment is racist and sexist</h3>
+{% endif %}
+{% if predictions == "not racist/sexist" %}
+<h3 style ="color:white" align = "center">Your comment is  not racist and sexist</h3>
+{% endif %}
+
+</body>  
