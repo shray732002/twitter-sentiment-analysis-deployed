@@ -39,7 +39,7 @@ def predict_loan_status():
         vector_input = tfidf.transform([transformed]).toarray()
         result = model.predict(vector_input)
         if result == 0:
-           result = " not racist/sexist"
+           result = "not racist/sexist"
         else:
            result = "racist/sexist"
         return render_template("index.html",predictions=str(result))
